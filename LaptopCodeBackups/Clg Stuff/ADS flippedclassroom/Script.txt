@@ -1,0 +1,8 @@
+We use these information gain and gini impurity to select the best question to ask at each point. 
+Using this we will  recursively build the tree on each of the new nodes. We continue this to divide the data untill there are no
+further questions to ask. At this point we will add a leaf
+
+Each of these becomes a candidate for threashhold we can use to partition the data. There will often be many possibilities
+
+Begin by calculating uncertanty of starting set, after each question, we try partitioning the data and calculate the uncertanty of child nondes that 
+result. We take a weighted avg of that uncertanty because we care about a large set with low uncertanty than small set with high 

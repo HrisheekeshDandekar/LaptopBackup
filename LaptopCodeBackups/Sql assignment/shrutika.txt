@@ -1,0 +1,127 @@
+	(base) [root@localhost ~]# sudo dnf install https:repo.mysql.com//mysql180-community-release-fc31-1.noarch.rpm
+Can not load RPM file: https:repo.mysql.com//mysql180-community-release-fc31-1.noarch.rpm.
+(base) [root@localhost ~]# sudo dnf install https://repo.myql.com//mysql180-community-release-fc31-1.noarch.rpm
+Curl error: Couldn't resolve host name for https://repo.myql.com//mysql180-community-release-fc31-1.noarch.rpm
+(base) [root@localhost ~]# mysql
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 2
+Server version: 5.5.43-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2015, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create database customer
+    -> ;
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [(none)]> CREATE TABLE student( rollno INT, grno INT PRIMARY KEY, student_name VARCHAR(20), address VARCHAR(30), dept VARCHAR(10), birthdate DATE, year_of_graduation INT);
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> create database student_db;
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [(none)]> create table student_db.student (rollno INT, grno INT PRIMARY KEY, student_name VARCHAR(20),address VARCHAR(20), deptVARCHAR(20), bithdate DATE, year_of_graduation INT);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(20), bithdate DATE, year_of_graduation INT)' at line 1
+MariaDB [(none)]> create table student_db.student(rollno  INT, grno INT, student_name VARCHAR(20), address VARCHAR(20), dept VARCHAR(20), birth_date DATE, year_of_graduation INT);
+Query OK, 0 rows affected (0.07 sec)
+
+MariaDB [(none)]> insert into table student_db.student (1, 100, 'Priya Kamat', 'Kondawa', 'COMPUTER ENG', '2002-01-21', 2024);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'table student_db.student (1, 100, 'Priya Kamat', 'Kondawa', 'COMPUTER ENG', '200' at line 1
+MariaDB [(none)]> insert into table student_db.student values(1,100,'Priya Kamat', 'Kondawa', 'Comp Eng', '2002-01-21',2024);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'table student_db.student values(1,100,'Priya Kamat', 'Kondawa', 'Comp Eng', '200' at line 1
+MariaDB [(none)]> insert into student_db.student values(1, 100, 'Priya Kamat', 'Kondawa', 'Comp Eng', '2002-01-21', 2024);
+Query OK, 1 row affected (0.02 sec)
+
+MariaDB [(none)]> Ctrl-C -- exit!
+Aborted
+(base) [root@localhost ~]# mysql
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 3
+Server version: 5.5.43-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2015, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> insert into student_db.student values(2,101, 'Pranav Joshi', 'Katraj', 'Comp Eng', '2002-02-22', 2024);
+Query OK, 1 row affected (0.02 sec)
+
+MariaDB [(none)]> select* from student_db.student;
++--------+------+--------------+---------+----------+------------+--------------------+
+| rollno | grno | student_name | address | dept     | birth_date | year_of_graduation |
++--------+------+--------------+---------+----------+------------+--------------------+
+|      1 |  100 | Priya Kamat  | Kondawa | Comp Eng | 2002-01-21 |               2024 |
+|      2 |  101 | Pranav Joshi | Katraj  | Comp Eng | 2002-02-22 |               2024 |
++--------+------+--------------+---------+----------+------------+--------------------+
+2 rows in set (0.00 sec)
+
+MariaDB [(none)]> insert into student_db.student values(3, 102, 'Meera Parab', 'Aurangabad', 'Comp Eng', '2002-05-12', 2024);
+Query OK, 1 row affected (0.02 sec)
+
+MariaDB [(none)]> insert into student_db.student values(4, 103, 'Vikas Agarwal', 'Vijaywada', 'Comp Eng', '2002-06-16', 2024);
+Query OK, 1 row affected (0.02 sec)
+
+MariaDB [(none)]> insert into student_db.student values(5,104, 'Shreyash Potdar', 'Kanpur', 'Comp Eng', '2002-10-21', 2024);
+Query OK, 1 row affected (0.03 sec)
+
+MariaDB [(none)]> insert into student_db.student values(6, 105, 'Kashish Agarwal', 'Nagpur', 'Comp Eng', '2002-05-21',2024);
+Query OK, 1 row affected (0.02 sec)
+
+MariaDB [(none)]> insert into student_db.student values(7, 106, 'Aditya Gangurde', 'Nashik', 'Comp Eng', '2002-02-09', 2024);
+Query OK, 1 row affected (0.01 sec)
+
+MariaDB [(none)]> insert into student_db.student values(8, 107, 'Hrisheekesh Dandekar', 'Kothrud', 'Comp Eng', '2002-02-24', 2024);
+Query OK, 1 row affected (0.01 sec)
+
+MariaDB [(none)]> insert into student_db.student values(9, 108, 'Atharv Chaudhari', 'Akot' , 'Comp Eng', '2002-05-15',2024);
+Query OK, 1 row affected (0.02 sec)
+
+MariaDB [(none)]> insert into student_db.student values(10, 109, 'Shrutika Hilale', 'Kondawa', 'Comp Eng', '2002-12-24', 2024;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [(none)]> insert into student_db.student values(10, 109, 'Shrutika Hilale', 'Kondawa', 'Comp Eng', '2002-12-24',2024);
+Query OK, 1 row affected (0.01 sec)
+
+MariaDB [(none)]> select* from student_db.student;
++--------+------+----------------------+------------+----------+------------+--------------------+
+| rollno | grno | student_name         | address    | dept     | birth_date | year_of_graduation |
++--------+------+----------------------+------------+----------+------------+--------------------+
+|      1 |  100 | Priya Kamat          | Kondawa    | Comp Eng | 2002-01-21 |               2024 |
+|      2 |  101 | Pranav Joshi         | Katraj     | Comp Eng | 2002-02-22 |               2024 |
+|      3 |  102 | Meera Parab          | Aurangabad | Comp Eng | 2002-05-12 |               2024 |
+|      4 |  103 | Vikas Agarwal        | Vijaywada  | Comp Eng | 2002-06-16 |               2024 |
+|      5 |  104 | Shreyash Potdar      | Kanpur     | Comp Eng | 2002-10-21 |               2024 |
+|      6 |  105 | Kashish Agarwal      | Nagpur     | Comp Eng | 2002-05-21 |               2024 |
+|      7 |  106 | Aditya Gangurde      | Nashik     | Comp Eng | 2002-02-09 |               2024 |
+|      8 |  107 | Hrisheekesh Dandekar | Kothrud    | Comp Eng | 2002-02-24 |               2024 |
+|      9 |  108 | Atharv Chaudhari     | Akot       | Comp Eng | 2002-05-15 |               2024 |
+|     10 |  109 | Shrutika Hilale      | Kondawa    | Comp Eng | 2002-12-24 |               2024 |
++--------+------+----------------------+------------+----------+------------+--------------------+
+10 rows in set (0.00 sec)
+
+MariaDB [(none)]> alter table student_db.student add division VARCHAR(1);
+Query OK, 10 rows affected (0.11 sec)              
+Records: 10  Duplicates: 0  Warnings: 0
+
+MariaDB [(none)]> update student_db.student set division = 'A';
+Query OK, 10 rows affected (0.01 sec)
+Rows matched: 10  Changed: 10  Warnings: 0
+
+MariaDB [(none)]> select* from student_db.student;
++--------+------+----------------------+------------+----------+------------+--------------------+----------+
+| rollno | grno | student_name         | address    | dept     | birth_date | year_of_graduation | division |
++--------+------+----------------------+------------+----------+------------+--------------------+----------+
+|      1 |  100 | Priya Kamat          | Kondawa    | Comp Eng | 2002-01-21 |               2024 | A        |
+|      2 |  101 | Pranav Joshi         | Katraj     | Comp Eng | 2002-02-22 |               2024 | A        |
+|      3 |  102 | Meera Parab          | Aurangabad | Comp Eng | 2002-05-12 |               2024 | A        |
+|      4 |  103 | Vikas Agarwal        | Vijaywada  | Comp Eng | 2002-06-16 |               2024 | A        |
+|      5 |  104 | Shreyash Potdar      | Kanpur     | Comp Eng | 2002-10-21 |               2024 | A        |
+|      6 |  105 | Kashish Agarwal      | Nagpur     | Comp Eng | 2002-05-21 |               2024 | A        |
+|      7 |  106 | Aditya Gangurde      | Nashik     | Comp Eng | 2002-02-09 |               2024 | A        |
+|      8 |  107 | Hrisheekesh Dandekar | Kothrud    | Comp Eng | 2002-02-24 |               2024 | A        |
+|      9 |  108 | Atharv Chaudhari     | Akot       | Comp Eng | 2002-05-15 |               2024 | A        |
+|     10 |  109 | Shrutika Hilale      | Kondawa    | Comp Eng | 2002-12-24 |               2024 | A        |
++--------+------+----------------------+------------+----------+------------+--------------------+----------+
+10 rows in set (0.00 sec)
+
+MariaDB [(none)]> 
+                                                                                                                                       
